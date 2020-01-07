@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 //6-Checklist - Serializable (padrão: 1L)
 @Entity
@@ -23,7 +25,8 @@ public class Categoria implements Serializable {
 	
 	//2-Checklist - Associação: Uma categoria tem vários produtos (Papel)
 	//8-Notação em um dos dois lados. Mapeamento da lista de categorias. Relação muitos para muitos.
-		@ManyToMany(mappedBy="categorias")
+	@JsonManagedReference
+	@ManyToMany(mappedBy="categorias")
 	private List<Produto> produtos = new ArrayList<>();
 	
 	public Categoria() {
