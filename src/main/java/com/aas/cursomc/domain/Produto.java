@@ -12,7 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 //6-Checklist - Serializable (padrão: 1L)
 //7-Entity e Id são mapeamentos
@@ -28,7 +28,7 @@ public class Produto implements Serializable {
 	private Double preco;
 
 	//8-Notação em um dos dois lados. Mapeamento da lista de categorias. Relação muitos para muitos.
-	@JsonBackReference
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA",
 		joinColumns = @JoinColumn(name = "produto_id"),
